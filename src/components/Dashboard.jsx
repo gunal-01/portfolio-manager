@@ -26,13 +26,13 @@ function Dashboard() {
                         color: 'grey', // Change text color to white for better contrast
                     }}
                 >
-                    <Typography variant="h4" gutterBottom>
-                        Welcome John Doe
+                    <Typography variant="h4" gutterBottom sx={{ fontWeight: 'bold', color: 'black'}}>
+                        <span>Welcome John Doe</span>
                     </Typography>
                     <Typography variant="body1" paragraph>
                         Effortlessly create, manage and showcase your professional journey.
                     </Typography>
-                    <Typography variant="h6" gutterBottom>
+                    <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: 'black'}}>
                         Key Features:
                     </Typography>
                     <Typography variant="body1" paragraph>
