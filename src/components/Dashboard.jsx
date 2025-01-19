@@ -1,159 +1,73 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
+import NavBar from './NavBar'; // Import the NavBar component
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-
-const pages = ['Home', 'Dashboard', 'Portfolio', 'Resume', 'Projects', 'Analytics', 'Settings'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+import Typography from '@mui/material/Typography';
 
 function Dashboard() {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
-    };
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
-    };
-
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
-
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-    };
-
     return (
-        <AppBar position="static" sx={{ backgroundColor: '#DC74E2' }}>
+        <>
+            <NavBar /> {/* Include the NavBar component */}
             <Container maxWidth="xl">
-                <Toolbar disableGutters>
-                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        href="#app-bar-with-responsive-menu"
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        height: '80vh',
+                        textAlign: 'center',
+                        backgroundImage: 'url(./src/assets/dima-solomin-lx9S_5CBuso-unsplash.jpg)', // Set the background image
+                        backgroundSize: 'cover', // Ensure the background covers the entire box
+                        backgroundPosition: 'center', // Center the background image
+                        borderRadius: '15px',
+                        padding: '20px',
+                        marginTop: '20px',
+                        color: 'grey', // Change text color to white for better contrast
+                    }}
+                >
+                    <Typography variant="h4" gutterBottom>
+                        Welcome John Doe
+                    </Typography>
+                    <Typography variant="body1" paragraph>
+                        Effortlessly create, manage and showcase your professional journey.
+                    </Typography>
+                    <Typography variant="h6" gutterBottom>
+                        Key Features:
+                    </Typography>
+                    <Typography variant="body1" paragraph>
+                        Portfolio Management: CRUD features for easy updates.
+                    </Typography>
+                    <Typography variant="body1" paragraph>
+                        Automated Resumes: Generate polished resumes instantly.
+                    </Typography>
+                    <Typography variant="body1" paragraph>
+                        Personalized Recommendations: RAG technology for tailored suggestions.
+                    </Typography>
+                    <Typography variant="body1" paragraph>
+                        Enhanced Visibility: Stand out in the job market.
+                    </Typography>
+                    <Typography variant="body1" paragraph>
+                        Get Started Today and elevate your career!
+                    </Typography>
+                    <Button
+                        variant="contained"
                         sx={{
-                            mr: 2,
-                            display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
+                            backgroundColor: '#DC74E2',
+                            borderRadius: '25px',
+                            padding: '10px 20px',
+                            marginTop: '20px',
+                            '&:hover': {
+                                backgroundColor: '#c25aa2',
+                            },
                         }}
                     >
-                        NavBar
-                    </Typography>
-
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                        <IconButton
-                            size="large"
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
-                            color="inherit"
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorElNav}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'left',
-                            }}
-                            open={Boolean(anchorElNav)}
-                            onClose={handleCloseNavMenu}
-                            sx={{ display: { xs: 'block', md: 'none' } }}
-                        >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box>
-                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-                    <Typography
-                        variant="h5"
-                        noWrap
-                        component="a"
-                        href="#app-bar-with-responsive-menu"
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'flex', md: 'none' },
-                            flexGrow: 1,
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        LOGO
-                    </Typography>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
-                            >
-                                {page}
-                            </Button>
-                        ))}
-                    </Box>
-                    <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Open settings">
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Gunal A" src="/static/images/avatar/2.jpg" />
-                            </IconButton>
-                        </Tooltip>
-                        <Menu
-                            sx={{ mt: '45px' }}
-                            id="menu-appbar"
-                            anchorEl={anchorElUser}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                        >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box>
-                </Toolbar>
+                        Get Started
+                    </Button>
+                </Box>
             </Container>
-        </AppBar>
+        </>
     );
 }
+
 export default Dashboard;
